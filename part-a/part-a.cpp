@@ -13,12 +13,35 @@ template <typename T>
 T findMaxRecTail(const T[] arr, const int size, int = 0)
 {
     // TO DO: Implement your code
+    // 1. Base Case: If we are at the last element, it's the max by default
+    if (i == size - 1) {
+        return arr[i];
+    }
+
+    // 2. Recursive Step: Go all the way to the end first
+    T max = findMaxRecTail(arr, size, i + 1);
+
+    // 3. Comparison: Now that we're coming back "up" the stack,
+    // compare the current element with the max of everything after it.
+    return (arr[i] > max) ? arr[i] : max;
 }
 
 template <typename T>
 T findMaxRecBinarySplit(const T[] arr, const int left, const int right)
 {
     // TO DO: Implement your code
+    if (left == right) return arr[left];
+
+    int mid = left + (right + left) / 2;
+
+    T leftMax = findMaxRecBinarySplit(arr, left, mid);
+    T rightMax = findMaxRecBinarySplit(arr, mid + 1, right);
+
+    if (leftMax < rightMax) {
+        return rightMax;
+    } else {
+        return leftMax;
+    }
 }
 /*******************************************************************************
  * Description:
