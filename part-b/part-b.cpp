@@ -17,7 +17,7 @@ void towerHanoi(int n, string sourceRod, string tempRod, string destRod, int& mo
     cout << "Moving disc " << n << " from " << sourceRod << " to " << destRod << endl;
     ++moves;
 
-    towerHanoi(n - 1, "Temp Rod", "Source Rod", "Destination Rod");
+    towerHanoi(n - 1, "Temp Rod", "Destination Rod", "Source Rod");
 }
 
 /*******************************************************************************
