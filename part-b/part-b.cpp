@@ -6,7 +6,7 @@ using namespace std;
 /*******************************************************************************
  * Function prototype
 *******************************************************************************/
-
+void towerHanoi(int, string, string, string, int&);
 void towerHanoi(int n, string sourceRod, string tempRod, string destRod, int& moves){
 
     //base case
