@@ -10,29 +10,29 @@ using namespace std;
 *******************************************************************************/
 
 template <typename T>
-T findMaxRecTail(const T[] arr, const int size, int = 0)
+T findMaxRecTail(const T arr[], const int size, int i)
 {
     // TO DO: Implement your code
-    // 1. Base Case: If we are at the last element, it's the max by default
+    // 1. Base Case: at the last element, assuming max by default
     if (i == size - 1) {
         return arr[i];
     }
 
-    // 2. Recursive Step: Go all the way to the end first
+    // 2. Recursive Step: go all the way to the end first
     T max = findMaxRecTail(arr, size, i + 1);
 
-    // 3. Comparison: Now that we're coming back "up" the stack,
+    // 3. Comparison: coming back "up" the stack,
     // compare the current element with the max of everything after it.
     return (arr[i] > max) ? arr[i] : max;
 }
 
 template <typename T>
-T findMaxRecBinarySplit(const T[] arr, const int left, const int right)
+T findMaxRecBinarySplit(const T arr[], const int left, const int right)
 {
     // TO DO: Implement your code
     if (left == right) return arr[left];
 
-    int mid = left + (right + left) / 2;
+    int mid = left + (right - left) / 2;
 
     T leftMax = findMaxRecBinarySplit(arr, left, mid);
     T rightMax = findMaxRecBinarySplit(arr, mid + 1, right);
@@ -67,9 +67,9 @@ int main() {
     // display the maximum
     cout << setfill('-') << setw(40) << "" << endl;
     cout << "Maximum using Recursion: "
-         << findMaxRecTail(myArray, SIZE) << endl 
+         << findMaxRecTail(myArray, SIZE, 0) << endl 
          << "From Binary split:" 
-        << findMaxRecBinarySplit(myArray, 0, SIZE-1)
+         << findMaxRecBinarySplit(myArray, 0, SIZE-1) << endl
          << "Should be 130 for the fixed array\n";
     cout << setfill('-') << setw(40) << "" << endl << endl;
 
@@ -89,10 +89,9 @@ int main() {
 
     // find the maximum using the recursive implementation
     cout << "Maximum using Recursion: "
-         << findMaxRecTail(randArray, SIZE_2) << endl;
+         << findMaxRecTail(randArray, SIZE_2, 0) << endl;
     cout << setfill('-') << setw(40) << "" << endl;
 
     // terminate
     return 0;
 }
-
