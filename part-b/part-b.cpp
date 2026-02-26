@@ -7,7 +7,18 @@ using namespace std;
  * Function prototype
 *******************************************************************************/
 
-void towerHanoi(int, string, string, string, int&);
+void towerHanoi(int n, string sourceRod, string tempRod, string destRod, int& moves){
+
+    //base case
+    if (n == 0) return;
+
+    towerHanoi(n - 1, "Source Rod", "Temp Rod", "Destination Rod");
+
+    cout << "Moving disc " << n << " from " << sourceRod << " to " << destRod << endl;
+    ++moves;
+
+    towerHanoi(n - 1, "Temp Rod", "Source Rod", "Destination Rod");
+}
 
 /*******************************************************************************
  * Description:
@@ -26,7 +37,7 @@ int main() {
     for (int i = 1, numMoves = 0; i <= 5; i++, numMoves = 0) {
         cout << setfill('-') << setw(40) << "" << endl;
         cout << "Trying n = " << i << endl << endl;
-        towerHanoi(i, "Rod #1", "Rod #2", "Rod #3", numMoves);
+        towerHanoi(i, "Source Rod", "Temp Rod", "Destination Rod", numMoves);
         cout << endl << "Number of Moves = " << numMoves << endl;
     }
 
