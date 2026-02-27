@@ -67,9 +67,9 @@ int main() {
     // display the maximum
     cout << setfill('-') << setw(40) << "" << endl;
     cout << "Maximum using Recursion: "
-         << findMaxRecTail(myArray, SIZE, 0) << endl 
+         << findMaxRecTail(myArray, SIZE, 1) << endl 
          << "From Binary split:" 
-         << findMaxRecBinarySplit(myArray, 0, SIZE-1) << endl
+         << findMaxRecBinarySplit(myArray, 1, SIZE-1) << endl
          << "Should be 130 for the fixed array\n";
     cout << setfill('-') << setw(40) << "" << endl << endl;
 
@@ -89,7 +89,7 @@ int main() {
 
     // find the maximum using the recursive implementation
     cout << "Maximum using Recursion: "
-         << findMaxRecTail(randArray, SIZE_2, 0) << endl;
+         << findMaxRecTail(randArray, SIZE_2, 1) << endl;
     cout << setfill('-') << setw(40) << "" << endl;
 
     // terminate
